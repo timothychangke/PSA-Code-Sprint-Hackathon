@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<h1 align="center">COURSES</h1>
+<ul class="list-group list-group-flush" id="notes">
+  {% for course in user.course %}
+  <li class="list-group-item">
+    {{ course.name }} add to button onClick="deleteNote({{ course.id }})"
+    <button type="button" class="close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+</ul>
+<form method="POST">
+  <div class="form-group">
+    <label for="course">Name of Course: </label>
+    <input
+      class="form-control"
+      id="course"
+      name="course"
+      placeholder="Course Name"
+    />
+  </div>
+  <div class="form-group">
+    <label for="organisation">Taught by: </label>
+    <input
+      class="form-control"
+      id="organisation"
+      name="organisation"
+      placeholder="Organisation"
+    />
+  </div>
+  <label for="organisation">Date attended: </label>
+  <input id="datepicker" name="datepicker" width="276" />
+  <script>
+      $('#datepicker').datepicker({
+          uiLibrary: 'bootstrap4'
+      });
+  </script>
+  </div>
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Add Course</button>
+  </div>
+</form>
+{% endblock %}
